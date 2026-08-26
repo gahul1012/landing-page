@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  ::selection {
+    background-color: #E31B23;
+    color: white;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #E31B23; }
+}
+
+@layer components {
+  /* Section label — small red uppercase eyebrow */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-[#E31B23] text-xs font-bold tracking-[0.15em] uppercase;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-6 h-0.5 rounded-full flex-shrink-0;
+    background-color: #E31B23;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl
+           text-white font-bold text-sm cursor-pointer select-none
+           active:scale-95 transition-all duration-200;
+    background-color: #E31B23;
+    box-shadow: 0 4px 20px rgba(227,27,35,0.35);
+  }
+  .btn-primary:hover {
+    background-color: #c91218;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl
+           bg-transparent text-white font-bold text-sm
+           border border-[#2a2a2a] active:scale-95
+           transition-all duration-200 cursor-pointer select-none;
+  }
+  .btn-secondary:hover {
+    border-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.05);
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-2xl transition-all duration-300;
+    background-color: #161616;
+    border: 1px solid #2a2a2a;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .card:hover {
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+
+  /* Poster card */
+  .poster-card {
+    @apply rounded-xl overflow-hidden transition-all duration-300 cursor-pointer;
+    background-color: #1c1c1c;
+    border: 1px solid #2a2a2a;
+  }
+  .poster-card:hover {
+    transform: translateY(-4px);
+    border-color: #E31B23;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.55);
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-0 border-t;
+    border-color: #2a2a2a;
+  }
+}
