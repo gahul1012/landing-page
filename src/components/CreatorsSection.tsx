@@ -1,142 +1,97 @@
 'use client';
 
 import React from 'react';
+import { ArrowRight, CheckCircle2, DollarSign } from 'lucide-react';
 
 const CREATOR_PERKS = [
-  {
-    id: 'cp1',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Keep up to 85% of your subscription revenue',
-  },
-  {
-    id: 'cp2',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Built-in HLS encoder — upload any format',
-  },
-  {
-    id: 'cp3',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Analytics dashboard with viewer retention heatmaps',
-  },
-  {
-    id: 'cp4',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Weekly payouts to your bank or crypto wallet',
-  },
-  {
-    id: 'cp5',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Custom channel branding and subscriber perks',
-  },
-  {
-    id: 'cp6',
-    icon: (
-      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
-      </svg>
-    ),
-    text: 'Priority support and EVO Creator Partner badge',
-  },
+  'Keep up to 85% of your subscription and pay-per-view revenue',
+  'Built-in automated HLS encoder — upload 4K, 1080p, and any video format',
+  'Real-time analytics dashboard with viewer retention and revenue metrics',
+  'Weekly direct payouts to your bank account or payment provider',
+  'Custom channel branding with banner, logo, social links, and bio',
+  'Priority creator support and verified EVO Partner badge',
 ];
 
 const STEPS = [
-  { num: '01', title: 'Create your channel', desc: 'Sign up in minutes. Customise your channel page, upload a banner, and write your bio.' },
-  { num: '02', title: 'Upload & publish',    desc: 'Drop any video file. Our encoder handles conversion to adaptive HLS automatically.' },
-  { num: '03', title: 'Grow & earn',         desc: 'Set subscription or pay-per-view pricing. Get paid weekly with transparent analytics.' },
+  { num: '01', title: 'Create your channel', desc: 'Sign up in minutes. Customise your dedicated channel page, upload your branding banner and logo.' },
+  { num: '02', title: 'Upload & publish',    desc: 'Drag & drop any video file. Our cloud encoder handles multi-bitrate HLS conversion automatically.' },
+  { num: '03', title: 'Monetize & grow',      desc: 'Set subscription or pay-per-view access. Track live watch time, followers, and receive weekly payouts.' },
 ];
 
 export const CreatorsSection: React.FC = () => {
   return (
-    <section id="creators" className="py-24 md:py-32 bg-brand-black">
+    <section id="creators" className="py-24 md:py-32 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-16 text-center max-w-2xl mx-auto">
-          <span className="section-label justify-center mb-4 block">For Creators</span>
-          <h2 className="font-display font-black text-white leading-tight mb-4"
+          <span className="section-label justify-center mb-3 block">For Content Creators</span>
+          <h2 className="font-display font-black text-slate-900 leading-tight mb-4"
             style={{ fontSize: 'clamp(1.875rem, 3.5vw, 3rem)' }}>
-            Your audience. <span className="text-brand-red">Your income.</span><br />
-            Your platform.
+            Your audience. <span className="text-[#E31B23]">Your income.</span><br />
+            Your creative freedom.
           </h2>
-          <p className="text-brand-muted text-base leading-relaxed">
-            EVO gives independent creators the tools and the revenue share that big platforms won't.
+          <p className="text-slate-600 text-base leading-relaxed">
+            EVO gives independent filmmakers and creators the studio tools, transcoding pipeline, and equitable revenue share that legacy platforms hold back.
           </p>
         </div>
 
         {/* Split layout */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
 
           {/* Left — Steps */}
-          <div className="space-y-6">
-            {STEPS.map((s, i) => (
-              <div key={s.num}
-                className="flex gap-6 p-6 rounded-2xl bg-brand-surface border border-brand-border
-                           hover:border-brand-red/40 transition-all duration-300 group">
-                <span className="font-display font-black text-3xl text-brand-red/30
-                  group-hover:text-brand-red transition-colors duration-300 leading-none flex-shrink-0 w-10">
+          <div className="space-y-4">
+            {STEPS.map((s) => (
+              <div
+                key={s.num}
+                className="flex gap-5 p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-200 transition-all duration-300 group"
+              >
+                <span className="font-display font-black text-2xl text-red-500/30 group-hover:text-[#E31B23] transition-colors duration-300 leading-none flex-shrink-0 w-8">
                   {s.num}
                 </span>
                 <div>
-                  <h3 className="text-white font-bold text-lg mb-1">{s.title}</h3>
-                  <p className="text-brand-muted text-sm leading-relaxed">{s.desc}</p>
+                  <h3 className="text-slate-900 font-bold text-base mb-1">{s.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{s.desc}</p>
                 </div>
               </div>
             ))}
 
-            <a id="creator-apply" href="#" className="btn-primary mt-2 w-full sm:w-auto justify-center">
-              Apply as a Creator
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"/>
-              </svg>
-            </a>
+            <div className="pt-2">
+              <a
+                id="creator-apply"
+                href="#hero"
+                className="btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full"
+              >
+                <span>Launch Creator Studio</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Right — Perks list + revenue highlight */}
           <div>
             {/* Revenue card */}
-            <div className="card p-7 mb-6 border-brand-red/30 bg-brand-red/5">
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-brand-red flex items-center justify-center flex-shrink-0 shadow-red">
-                  <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                  </svg>
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-red-50 to-rose-50 border border-red-200/80 shadow-sm mb-6">
+              <div className="flex items-center gap-5">
+                <div className="w-16 h-16 rounded-2xl bg-[#E31B23] flex items-center justify-center flex-shrink-0 text-white shadow-[0_4px_20px_rgba(227,27,35,0.35)]">
+                  <DollarSign className="w-8 h-8" />
                 </div>
                 <div>
-                  <p className="font-display font-black text-3xl text-white">85%</p>
-                  <p className="text-brand-muted text-sm">Revenue share for creators</p>
+                  <p className="font-display font-black text-4xl text-slate-900 leading-none">85%</p>
+                  <p className="text-slate-700 font-bold text-sm mt-1">Creator Revenue Share</p>
                 </div>
               </div>
-              <p className="text-brand-muted text-xs mt-4 leading-relaxed">
-                Industry-leading split. No hidden fees. No algorithm suppression. Pure creator-first economics.
+              <p className="text-slate-600 text-xs sm:text-sm mt-4 leading-relaxed">
+                Industry-leading payout ratio. Zero hidden transcoding fees, zero algorithmic suppression. Pure creator-first economics.
               </p>
             </div>
 
             {/* Perks list */}
-            <div className="space-y-3">
-              {CREATOR_PERKS.map((p) => (
-                <div key={p.id} id={p.id} className="flex items-center gap-3">
-                  <span className="text-brand-red flex-shrink-0">{p.icon}</span>
-                  <p className="text-white text-sm">{p.text}</p>
+            <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm space-y-3.5">
+              {CREATOR_PERKS.map((text, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#E31B23] flex-shrink-0 mt-0.5" />
+                  <p className="text-slate-700 text-xs sm:text-sm leading-snug">{text}</p>
                 </div>
               ))}
             </div>

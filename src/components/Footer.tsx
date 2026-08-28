@@ -4,10 +4,10 @@ import React from 'react';
 import { EvoLogo } from './EvoLogo';
 
 const FOOTER_LINKS = {
-  'Platform': ['Home', 'Browse', 'New Releases', 'Originals', 'Live TV', 'My List'],
-  'Support':  ['Help Centre', 'Contact Us', 'Community', 'System Status', 'Accessibility'],
-  'Creators': ['Creator Portal', 'Apply Now', 'Creator Docs', 'Revenue Split', 'Partner Badge'],
-  'Company':  ['About EVO', 'Careers', 'Press', 'Privacy Policy', 'Terms of Service'],
+  'Platform': ['Home', 'Browse', 'New Releases', 'Originals', 'Live TV', 'Saved List'],
+  'Support':  ['Help Centre', 'Contact Us', 'Community', 'System Status', 'Parental Controls'],
+  'Creators': ['Creator Portal', 'Apply Now', 'HLS Transcoding', 'Revenue Split', 'Partner Badge'],
+  'Company':  ['About EVO', 'Careers', 'Press Kit', 'Privacy Policy', 'Terms of Service'],
 };
 
 const SOCIAL_LINKS = [
@@ -41,41 +41,31 @@ const SOCIAL_LINKS = [
       </svg>
     ),
   },
-  {
-    id: 'soc-tiktok',
-    label: 'TikTok',
-    href: '#',
-    icon: (
-      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden>
-        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.76a8.2 8.2 0 004.79 1.53V6.84a4.85 4.85 0 01-1.02-.15z"/>
-      </svg>
-    ),
-  },
 ];
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-brand-dark border-t border-brand-border pt-16 pb-8">
+    <footer className="bg-white border-t border-slate-200 pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Top row */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-14">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <EvoLogo size="md" className="mb-5" />
-            <p className="text-brand-muted text-xs leading-relaxed mb-5 max-w-[180px]">
-              Stream movies, originals, and creator content — anywhere in the world.
+            <EvoLogo size="sm" className="mb-4" />
+            <p className="text-slate-500 text-xs leading-relaxed mb-5 max-w-[200px]">
+              Stream original movies, web series, and bold cinema — anywhere in the world.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               {SOCIAL_LINKS.map((s) => (
                 <a
                   key={s.id}
                   id={s.id}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border
-                    flex items-center justify-center text-brand-muted
-                    hover:text-white hover:border-white/30 transition-all duration-200"
+                  className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200
+                    flex items-center justify-center text-slate-600
+                    hover:text-white hover:bg-[#E31B23] hover:border-[#E31B23] transition-all duration-200"
                 >
                   {s.icon}
                 </a>
@@ -86,11 +76,11 @@ export const Footer: React.FC = () => {
           {/* Nav columns */}
           {Object.entries(FOOTER_LINKS).map(([group, links]) => (
             <div key={group}>
-              <h3 className="text-white text-xs font-bold uppercase tracking-widest mb-4">{group}</h3>
+              <h3 className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-4">{group}</h3>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-brand-muted text-sm hover:text-white transition-colors duration-200">
+                    <a href="#hero" className="text-slate-500 text-xs sm:text-sm hover:text-[#E31B23] transition-colors duration-200">
                       {link}
                     </a>
                   </li>
@@ -104,15 +94,15 @@ export const Footer: React.FC = () => {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-brand-subtle text-xs">
+          <p className="text-slate-500 text-xs">
             © {new Date().getFullYear()} EVO — Equitable Visual Originals. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-brand-subtle text-xs hover:text-white transition-colors duration-200">Privacy</a>
-            <a href="#" className="text-brand-subtle text-xs hover:text-white transition-colors duration-200">Terms</a>
-            <a href="#" className="text-brand-subtle text-xs hover:text-white transition-colors duration-200">Cookies</a>
-            <span className="text-brand-border">|</span>
-            <span className="text-brand-subtle text-xs">Available in 150+ countries</span>
+            <a href="#" className="text-slate-500 text-xs hover:text-[#E31B23] transition-colors duration-200">Privacy</a>
+            <a href="#" className="text-slate-500 text-xs hover:text-[#E31B23] transition-colors duration-200">Terms</a>
+            <a href="#" className="text-slate-500 text-xs hover:text-[#E31B23] transition-colors duration-200">Cookies</a>
+            <span className="text-slate-300">|</span>
+            <span className="text-slate-400 text-xs">Available in 100+ countries</span>
           </div>
         </div>
       </div>

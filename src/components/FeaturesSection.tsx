@@ -14,16 +14,6 @@ const FEATURES = [
     desc:  'Adaptive HLS bitrate streaming up to 4K at 60fps. Crystal-clear picture with Dolby Vision support on compatible devices.',
   },
   {
-    id: 'f2',
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-    ),
-    title: 'Watch Offline',
-    desc:  'Download up to 25 titles per month. Watch your favourites on the plane, commute, or anywhere — no internet needed.',
-  },
-  {
     id: 'f3',
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -32,16 +22,6 @@ const FEATURES = [
     ),
     title: 'Continue Anywhere',
     desc:  'Seamless cross-device sync. Start on your TV, continue on your phone. Your position, watchlist and settings follow you.',
-  },
-  {
-    id: 'f4',
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
-    title: '5 Profiles',
-    desc:  'Create up to 5 individual profiles per subscription, each with personalised recommendations, watchlists, and parental controls.',
   },
   {
     id: 'f5',
@@ -67,38 +47,38 @@ const FEATURES = [
 
 export const FeaturesSection: React.FC = () => {
   return (
-    <section id="features" className="py-24 md:py-32 bg-brand-black">
+    <section id="features" className="py-24 md:py-32 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-16 md:mb-20">
-          <span className="section-label mb-4 block">Platform Features</span>
+          <span className="section-label mb-3 block">Platform Features</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <h2 className="font-display font-black text-white leading-tight"
+            <h2 className="font-display font-black text-slate-900 leading-tight"
               style={{ fontSize: 'clamp(2rem, 4vw, 3.25rem)' }}>
               Everything you need,<br />
-              <span className="text-brand-red">built right in.</span>
+              <span className="text-[#E31B23]">built right in.</span>
             </h2>
-            <p className="text-brand-muted text-base max-w-xs md:text-right leading-relaxed">
-              One subscription that covers every device, every member, and every mood.
+            <p className="text-slate-600 text-base max-w-xs md:text-right leading-relaxed">
+              Stream effortlessly across every device, every creator, and every mood.
             </p>
           </div>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Feature Grid (4 cards in responsive grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURES.map((f) => (
-            <div id={f.id} key={f.id} className="card p-7 group">
+            <div id={f.id} key={f.id} className="card p-8 group hover:-translate-y-1 transition-all duration-300">
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-brand-card border border-brand-border
-                flex items-center justify-center text-brand-red mb-5
-                group-hover:bg-brand-red group-hover:border-brand-red group-hover:text-white
-                transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100
+                flex items-center justify-center text-[#E31B23] mb-6
+                group-hover:bg-[#E31B23] group-hover:border-[#E31B23] group-hover:text-white
+                transition-all duration-300 shadow-sm">
                 {f.icon}
               </div>
               {/* Text */}
-              <h3 className="text-white font-bold text-lg mb-2">{f.title}</h3>
-              <p className="text-brand-muted text-sm leading-relaxed">{f.desc}</p>
+              <h3 className="text-slate-900 font-bold text-lg mb-2.5">{f.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>

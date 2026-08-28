@@ -3,21 +3,24 @@ import React from 'react';
 interface EvoLogoProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   className?: string;
+  theme?: 'dark' | 'light';
 }
 
 /**
- * EVO logo matching the client's reference:
+ * Previous EVO logo:
  *  • 3D red ribbon play-button icon on top
- *  • "E" in bold white, "vo" in bold red  below
- *  • "— STREAM BEYOND —" tagline in small caps
+ *  • "E" in bold slate/black, "vo" in bold red below
+ *  • "— STREAM BEYOND —" tagline
  */
-export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '' }) => {
+export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '', theme = 'light' }) => {
   const cfg = {
     xs: { iconW: 22, textCls: 'text-lg',  tagCls: 'text-[7px]',  gap: 'gap-0.5' },
     sm: { iconW: 28, textCls: 'text-xl',  tagCls: 'text-[8px]',  gap: 'gap-0.5' },
     md: { iconW: 36, textCls: 'text-2xl', tagCls: 'text-[9px]',  gap: 'gap-1'   },
     lg: { iconW: 56, textCls: 'text-4xl', tagCls: 'text-[11px]', gap: 'gap-1.5' },
   }[size];
+
+  const isLight = theme === 'light';
 
   return (
     <div className={`inline-flex flex-col items-center select-none ${cfg.gap} ${className}`}>
@@ -27,7 +30,7 @@ export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '' })
         viewBox="0 0 56 56"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="drop-shadow-[0_2px_8px_rgba(227,27,35,0.4)]"
+        className="drop-shadow-[0_2px_8px_rgba(227,27,35,0.35)]"
         aria-hidden
       >
         <defs>
@@ -57,14 +60,12 @@ export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '' })
         {/* Soft drop shadow ellipse */}
         <ellipse cx="28" cy="53" rx="18" ry="3" fill="url(#lg-shadow)" />
 
-        {/* ── Outer ribbon body (rounded-corner triangle loop) ── */}
-        {/* Main triangular face */}
+        {/* ── Outer ribbon body ── */}
         <path
           d="M 10 6  C 10 3, 13 2, 15.5 3.5
              L 47 22  C 50 23.5, 50 32.5, 47 34
              L 15.5 52.5 C 13 54, 10 53, 10 50 Z"
           fill="url(#lg-outer)"
-          rx="4"
         />
         {/* Right bevel / side face */}
         <path
@@ -73,12 +74,12 @@ export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '' })
           fill="url(#lg-side)"
         />
 
-        {/* ── Cut-out arrow hole (to make the ribbon look hollow) ── */}
+        {/* ── Cut-out arrow hole ── */}
         <path
           d="M 17 13  C 17 11, 19 10.5, 20.5 11.5
              L 41 23.5 C 42.5 24.5, 42.5 31.5, 41 32.5
              L 20.5 44.5 C 19 45.5, 17 45, 17 43 Z"
-          fill="#0a0a0a"
+          fill={isLight ? '#ffffff' : '#0a0a0a'}
         />
 
         {/* ── Bottom ribbon fold / loop ── */}
@@ -94,15 +95,15 @@ export const EvoLogo: React.FC<EvoLogoProps> = ({ size = 'md', className = '' })
 
       {/* ── Wordmark Row ───────────────────────────────────────── */}
       <div className={`flex items-baseline leading-none font-display font-black ${cfg.textCls}`}>
-        <span className="text-white">E</span>
-        <span className="text-brand-red">vo</span>
+        <span className={isLight ? 'text-slate-950' : 'text-white'}>E</span>
+        <span className="text-[#E31B23]">vo</span>
       </div>
 
       {/* ── Tagline ────────────────────────────────────────────── */}
-      <div className={`flex items-center gap-1.5 tracking-[0.25em] text-brand-muted font-medium uppercase ${cfg.tagCls}`}>
-        <span className="inline-block w-3 h-px bg-brand-red" />
+      <div className={`flex items-center gap-1.5 tracking-[0.25em] font-bold uppercase ${isLight ? 'text-slate-500' : 'text-slate-400'} ${cfg.tagCls}`}>
+        <span className="inline-block w-2.5 h-px bg-[#E31B23]" />
         <span>Stream Beyond</span>
-        <span className="inline-block w-3 h-px bg-brand-red" />
+        <span className="inline-block w-2.5 h-px bg-[#E31B23]" />
       </div>
     </div>
   );
